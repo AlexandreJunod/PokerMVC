@@ -1,0 +1,411 @@
+/*--====================================================================================================================
+||  Author : Junod Alexandre                                                                                           ||
+||  Creation : 16.02.2018                                                                                              ||
+||  Summary : All the divs for the different pages of the poker online                                                 ||
+||====================================================================================================================-*/
+
+/********** Divs for the next pages : index.php and signup.php **********/
+
+/* Encompasses other divs and center in the middle of the page index.php */
+.FormContainerIndex{ 
+    width: 400px;
+    height: 400px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    
+    /* Center the div in the middle of the page */
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Encompasses other divs and center in the middle of the page signup.php */
+.FormContainerSignup{ 
+    width: 700px;
+    height: 400px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    
+    /* Center the div in the middle of the page */
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Contains the text above the form*/
+.FormTitle{
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 35px;
+    text-align: center;
+    
+    display: block;
+    width:100%;
+    height:15%;
+}
+
+/* Contains the border of the form */
+.FormDesign{
+    border: 2px solid;
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px 3px #ccc;
+    
+    display: block;
+    width:100%;
+    height:75%;    
+}
+
+/* Contains the input fields of the page index.php */
+.FormFieldsIndex{
+    text-align: left;
+    
+    display: block;
+    width:70%;
+    height:60%;
+    margin: auto;
+    padding-top: 15%;
+}
+
+/* Contains the input fields of the page signup.php */
+.FormFieldsSignup{
+    text-align: left;
+    
+    display: block;
+    width:42.5%;
+    height:61.2%;
+    margin-left: 5.5%;
+    padding-top: 8%;
+    float: left;
+}
+
+/* Contains the the critereas of sign up, page signup.php */
+.FormCritereaSignup{
+    text-align: left;
+    color: red;
+    
+    display: block;
+    width:42.5%;
+    height:61.2%;
+    margin-left: 7.5%;
+    padding-top: 8%;
+    float: right;
+}
+
+/* Contains the button */
+.FormButton{
+    text-align: center;
+    
+    display: block;
+    width:100%;
+    height:10%;    
+    margin: auto;
+    clear: left;
+}
+
+/* Contains the links */
+.FormLink{
+    text-align: center;
+    
+    display: block;
+    width:100%;
+    height:10%;
+    padding-top: 30px;
+}
+
+/* Input fields of the page index.php */
+#InputIndex{
+    width:100%;
+    font-size: 16px;    
+}
+
+/* Input fields of the page inscription.php*/
+#InputSignup{
+    width:90%;
+    font-size: 16px;  
+    float: left;
+}
+
+/********** Div for the page home.php **********/
+
+.ContainerHome{ 
+    width: 123px;
+    height: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    
+    /* Center the div in the middle of the page */
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/********** Divs for the page table.php **********/
+
+/* Place of the player number 0 */
+.SeatPlayer0{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 550;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto
+}
+
+/* Place of the player number 1 */
+.SeatPlayer1{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 400;
+    bottom: 0;
+    left: 0;
+    right: 1350;
+    margin: auto
+}
+
+/* Place of the player number 2 */
+.SeatPlayer2{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 0;
+    bottom: 480;
+    left: 0;
+    right: 1350;
+    margin: auto
+}
+
+/* Place of the player number 3 */
+.SeatPlayer3{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 0;
+    bottom: 630;
+    left: 0;
+    right: 0;
+    margin: auto
+}
+
+/* Place of the player number 4 */
+.SeatPlayer4{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 0;
+    bottom: 480;
+    left: 1350;
+    right: 0;
+    margin: auto
+}
+
+/* Place of the player number 5 */
+.SeatPlayer5{ 
+    width: 150px;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    
+    position:absolute;
+    top: 400;
+    bottom: 0;
+    left: 1350;
+    right: 0;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 0 */
+.TokenPlayer0{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute;
+    top: 550;
+    bottom: 0;
+    left: 150;
+    right: 0;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 1 */
+.TokenPlayer1{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute;
+    top: 400;
+    bottom: 0;
+    left: 0;
+    right: 1200;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 2 */
+.TokenPlayer2{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute;
+    top: 0;
+    bottom: 480;
+    left: 0;
+    right: 1200;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 3 */
+.TokenPlayer3{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute; 
+    top: 0;
+    bottom: 630;
+    left: 150;
+    right: 0;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 4 */
+.TokenPlayer4{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute;
+     top: 0;
+    bottom: 480;
+    left: 1500;
+    right: 0;
+    margin: auto
+}
+
+/* Token dealer, big blind and small blind of the player number 5 */
+.TokenPlayer5{ 
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: red;
+    color: white;
+    
+    position:absolute;
+    top: 400;
+    bottom: 0;
+    left: 1500;
+    right: 0;
+    margin: auto
+}
+
+/********** Divs for all the pages **********/
+
+body{
+    background-size: cover;
+}
+
+/* Contains the pseudo of the player and the button of sign out, in the page home.php*/
+/* Contains the pseudo, the money of the player and the button get up, in the page table.php*/
+.InfosPlayer{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: white;
+    
+    width: 250px;
+    height: 200px;
+    float:right;
+}
+
+/********** Mise en forme pour les messages d'erreurs **********/
+
+.ErrorMsg{
+    position: sticky;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: red;
+    
+    /* Centrer la div verticallement au millieu, 20 pixels plus bas que le haut de la page */
+    position:absolute;
+    width: 99%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/********* Temporary div for the buttons *********/
+
+.Button{
+    width: 400px;
+    height: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: grey;
+    
+    /* Center the div in the middle of the page */
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
