@@ -2,6 +2,8 @@
 
 require('model/frontend.php');
 
+$Pseudo = $_SESSION['Pseudo'];
+
 //List the informations of the players and of the tables 
 function ListInfoGames()
 {
@@ -31,29 +33,35 @@ function ListInfoGames()
 }
 
 //Login form
-function DoLogin()
+function DoLogin($Pseudo, $Password)
 {
     //Check if the Form was sent
-    if(isset($_POST['PseudoForm']))
+    if(isset($Pseudo) && isset($Password))
     {
-        $Pseudo = $_POST['PseudoForm']; //Pseudo gived by the user who tries to sign up
-        $Password = $_POST['PasswordForm']; //Password gived by the user who tries to sign up
         $InfoLogins = Login($Pseudo, $Password); //Check if the account exists
         
         if($InfoLogins != NULL) //If datas are returned, the pseudo exists
         {
             extract($InfoLogins); //$idPlayer, $PseudoPlayer, $PasswordPlayer, $HashPassword
             
-            if($PasswordPlayer != $HashPassword) //Check if the password gived by the user is the same than the password hashed of the data base
+            if($PasswordPlayer == $HashPassword) //Check if the password gived by the user is the same than the password hashed of the data base
+            {
+                $_SESSION['Pseudo'] = $Pseudo;
+                ListInfoGames();
+                return;
+            }
+            else
             {
                 $Error = "Le mot de passe est erroné";
-                $CanSaveSession = 1; //Dont let the session start
+                unset($_SESSION['Pseudo']); //Dont let the session start
+                unset($Pseudo); //Dont let the session start
             }
         } 
         else //No datas were returned, the pseudo was not find
         {
             $Error = "Le pseudo est erroné";
-            $CanSaveSession = 1; //Dont let the session start
+            unset($_SESSION['Pseudo']); //Dont let the session start
+            unset($Pseudo); //Dont let the session start
         }
     }
     require('view/frontend/LoginView.php');
@@ -63,27 +71,30 @@ function DoLogin()
 function DoSignup()
 {
     //Check if the Form was sent
-    if(isset($_POST['PseudoForm']))
+    if(isset($Pseudo) && isset($Password))
     {
-        $Pseudo = $_POST['PseudoForm']; //Pseudo gived by the user who tries to sign up
-        $Password = $_POST['PasswordForm']; //Password gived by the user who tries to sign up
         $InfosSignup = CheckAccount($Pseudo); //Check if the account exists
         
         if($InfosSignup->rowCount() > 0)
         {
             $Error = "Ce pseudo existe déjà"; //Varriable to show the error message
-            $CanSaveSession = 1; //Dont let the session start
+            unset($_SESSION['Pseudo']); //Dont let the session start
+            unset($Pseudo); //Dont let the session start
         }
         else
         {
             if (preg_match("#[^a-zA-Z0-9]#", $Password)) //Check if the password matches with the required criterias
             { 
                 $InfosSignup2 = Signup($Pseudo, $Password); //Create the account
+                $_SESSION['Pseudo'] = $Pseudo;
+                ListInfoGames();
+                return;
             }
             else //The password doesn't matches with the required criterias
             {
                 $Error = "Le mot ne correspond pas aux critères"; //Varriable to show the error message
-                $CanSaveSession = 1; //Dont let the session start
+                unset($_SESSION['Pseudo']); //Dont let the session start
+                unset($Pseudo); //Dont let the session start
             }
         }
     }

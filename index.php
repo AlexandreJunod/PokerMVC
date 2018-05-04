@@ -2,6 +2,8 @@
 session_start();
 require('controller/frontend.php');
 
+//error_log(print_r($_POST, 1));
+
 try
 {
     if(isset($_SESSION['Pseudo']))
@@ -10,11 +12,22 @@ try
     }
     elseif(isset($_GET['Signup']))
     {
-        DoSignup();
+        if(isset($_POST['Signup']))
+        {
+            DoSignup($_POST['PseudoForm'], $_POST['PasswordForm']);
+        }
+        else
+        {
+            DoSignup;
+        }
+    }
+    elseif(isset($_POST['Login']))
+    {
+        DoLogin($_POST['PseudoForm'], $_POST['PasswordForm']);
     }
     else
     {
-        DoLogin();
+        DoLogin(NULL, NULL);
     }    
 }
 catch(Exception $e)

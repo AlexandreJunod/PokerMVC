@@ -13,7 +13,7 @@
 </html>
 
 <?php 
-if(isset($Pseudo) && !isset($CanSaveSession))
+if(isset($Pseudo)) //&& !isset($CanSaveSession)
     {
         $_SESSION['Pseudo'] = $Pseudo; 
     }
