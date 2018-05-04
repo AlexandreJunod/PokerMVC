@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('controller/frontend.php');
+require('function/function.php');
 
 //error_log(print_r($_POST, 1));
 
@@ -18,16 +19,19 @@ try
         }
         else
         {
-            DoSignup;
+            DoSignup(NULL, NULL);
         }
-    }
-    elseif(isset($_POST['Login']))
-    {
-        DoLogin($_POST['PseudoForm'], $_POST['PasswordForm']);
     }
     else
     {
-        DoLogin(NULL, NULL);
+        if(isset($_POST['Login']))
+        {
+            DoLogin($_POST['PseudoForm'], $_POST['PasswordForm']);
+        }
+        else
+        {
+            DoLogin(NULL, NULL);
+        }
     }    
 }
 catch(Exception $e)
