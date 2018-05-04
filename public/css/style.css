@@ -130,6 +130,35 @@
     float: left;
 }
 
+/* Tables form */
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+}
+
+td, th{
+    border: 1px solid #a5e1a5;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #f4fff7;
+}
+
+tr:nth-child(odd){
+    background-color: #dbffe5;
+}
+
+tr:nth-child(1){
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+}
+
+
+
 /********** Div for the page home.php **********/
 
 .ContainerHome{ 

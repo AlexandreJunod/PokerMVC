@@ -2,15 +2,30 @@
 
 require('model/frontend.php');
 
-//List the options of the players and of the tables 
+//List the informations of the players and of the tables 
 function ListInfoGames()
 {
-    $InfoGames = GetInfoGames();
+    $InfoTables = GetInfoTables(); //Collect informations about the tables
     
-    foreach($InfoGames as $InfoGame)
+    foreach($InfoTables as $InfoTable)
     {
-        $Table1 = array(
-        array('MoneySeat' => $InfoGame['MoneySeat'], 'BetSeat' => $InfoGame['BetSeat'], 'HandSeat' => $InfoGame['HandSeat'], 'OrderSeat' => $InfoGame['OrderSeat'], 'fkGameSeat' => $InfoGame['fkGameSeat'], 'fkStatusSeat' => $InfoGame['fkStatusSeat'], 'fkPlayerSeat' => $InfoGame['fkPlayerSeat']));
+        $NbTableGame = $InfoTable['idGame']; //Take the number of the game
+        $GameNB = 'Game'.$NbTableGame; //Create a variable, for get the name of the array to build
+        $TableNB = 'Table'.$NbTableGame; //Create a variable, for get the name of the array to build
+        
+        $InfoPlayers = GetInfoPlayers($NbTableGame); //Collect informations about the players 
+        
+        //Create the array with informations about the table. $$ Uses the value of the variable as variable
+        $$TableNB = array( 
+        array('PotGame' => $InfoTable['PotGame'], 'BoardGame' => $InfoTable['BoardGame'], 'BlindGame' => $InfoTable['BlindGame'], 'DealerGame' => $InfoTable['DealerGame'], 'HourStartGame' => $InfoTable['HourStartGame'], 'TimeToIncreaseBlind' => $InfoTable['TimeToIncreaseBlind']));
+        
+        $$GameNB = array(); //Create the array with informations about the users. $$ Uses the value of the variable as variable
+        
+        foreach($InfoPlayers as $InfoPlayer)
+        {
+            //Add informationns about the users in the array. 
+            array_push($$GameNB, array('PseudoPlayer' => $InfoPlayer['PseudoPlayer'], 'MoneySeat' => $InfoPlayer['MoneySeat'], 'BetSeat' => $InfoPlayer['BetSeat'], 'HandSeat' => $InfoPlayer['HandSeat'], 'OrderSeat' => $InfoPlayer['OrderSeat'], 'fkGameSeat' => $InfoPlayer['fkGameSeat'], 'DescriptionStatus' => $InfoPlayer['DescriptionStatus']));
+        }
     }
     require('view/frontend/TableView.php');
 }
@@ -25,24 +40,20 @@ function DoLogin()
         $Password = $_POST['PasswordForm']; //Password gived by the user who tries to sign up
         $InfoLogins = Login($Pseudo, $Password); //Check if the account exists
         
-        foreach($InfoLogins as $InfoLogin)
+        if($InfoLogins != NULL) //If datas are returned, the pseudo exists
         {
-            $PasswordPlayer = InfoLogin['PasswordPlayer'];
-            $HashPassword = InfoLogin['HashPassword'];
-        }
-        
-        if($InfoLogins->rowCount() > 0) //If datas are returned, the pseudo exists
-        {
+            extract($InfoLogins); //$idPlayer, $PseudoPlayer, $PasswordPlayer, $HashPassword
+            
             if($PasswordPlayer != $HashPassword) //Check if the password gived by the user is the same than the password hashed of the data base
             {
                 $Error = "Le mot de passe est erroné";
-                $Pseudo = NULL; //Dont let the session start
+                $CanSaveSession = 1; //Dont let the session start
             }
         } 
         else //No datas were returned, the pseudo was not find
         {
             $Error = "Le pseudo est erroné";
-            $Pseudo = NULL; //Dont let the session start
+            $CanSaveSession = 1; //Dont let the session start
         }
     }
     require('view/frontend/LoginView.php');
@@ -61,6 +72,7 @@ function DoSignup()
         if($InfosSignup->rowCount() > 0)
         {
             $Error = "Ce pseudo existe déjà"; //Varriable to show the error message
+            $CanSaveSession = 1; //Dont let the session start
         }
         else
         {
@@ -71,6 +83,7 @@ function DoSignup()
             else //The password doesn't matches with the required criterias
             {
                 $Error = "Le mot ne correspond pas aux critères"; //Varriable to show the error message
+                $CanSaveSession = 1; //Dont let the session start
             }
         }
     }

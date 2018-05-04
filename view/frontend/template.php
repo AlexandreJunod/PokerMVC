@@ -13,8 +13,8 @@
 </html>
 
 <?php 
-if(isset($Pseudo))
-   {
-       $_SESSION['Pseudo'] = $Pseudo; 
-   }
+if(isset($Pseudo) && !isset($CanSaveSession))
+    {
+        $_SESSION['Pseudo'] = $Pseudo; 
+    }
 ?>

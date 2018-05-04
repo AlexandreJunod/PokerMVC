@@ -1,7 +1,6 @@
 <?php $title = 'Signup'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
 <div class="FormContainerSignup">
     <div class="FormTitle">Inscription</div>
     <div class="FormDesign">
@@ -14,4 +13,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('Template.php'); ?>

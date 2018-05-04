@@ -1,7 +1,6 @@
 <?php $title = 'Login'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
 <div class="FormContainerIndex">
     <div class="FormTitle">Connexion</div>
     <div class="FormDesign">
@@ -13,4 +12,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('Template.php'); ?>

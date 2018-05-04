@@ -20,13 +20,22 @@ function ConnectDB()
     return $dbh;
 }
 
-//Select datas about the games
-function GetInfoGames()
+//Select datas about the tables
+function GetInfoTables()
 {
     $dbh = ConnectDB();
-    $req = $dbh->query("SELECT MoneySeat, BetSeat, HandSeat, OrderSeat, fkGameSeat, fkStatusSeat, fkPlayerSeat FROM poker.seat");
+    $req = $dbh->query("SELECT idGame, PotGame, BoardGame, BlindGame, DealerGame, HourStartGame, (SELECT ValueInt FROM poker.settings WHERE NameSettings = 'TimeToIncreaseBlind') as TimeToIncreaseBlind FROM poker.game");
     
     return $req;
+}
+
+//Select datas about the players
+function GetInfoPlayers($NbTableGame)
+{
+    $dbh = ConnectDB();
+    $req = $dbh->query("SELECT PseudoPlayer, MoneySeat, BetSeat, HandSeat, OrderSeat, fkGameSeat, DescriptionStatus FROM poker.seat INNER JOIN poker.player ON fkPlayerSeat = idPlayer INNER JOIN poker.status ON fkStatusSeat = idStatus WHERE fkGameSeat = '$NbTableGame'");
+
+    return $req; 
 }
 
 //Select the player with the informations sent by the user
@@ -34,9 +43,10 @@ function Login($Pseudo, $Password)
 {
     $dbh = ConnectDB();
     $req = $dbh->query("SELECT idPlayer, PseudoPlayer, PasswordPlayer, PASSWORD('$Password') as HashPassword FROM poker.player WHERE PseudoPlayer = '$Pseudo'");
-    $LoginDatas = $req->fetch();
-    
-    return $req;
+    $req->execute(array());
+    $reqArray = $req->fetch();
+
+    return $reqArray;
 }
 
 //Check if the account exists
